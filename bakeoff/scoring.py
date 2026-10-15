@@ -1,6 +1,13 @@
 """Pure scoring functions (no Ollama needed)."""
 from __future__ import annotations
 import json, re, statistics
+from decimal import Decimal, ROUND_HALF_UP
+
+
+def r1(x, nd=1):
+    """Round half-up (Python's round() is binary/banker's: round(40.65, 1) == 40.6)."""
+    q = Decimal(1).scaleb(-nd)
+    return float(Decimal(repr(float(x))).quantize(q, rounding=ROUND_HALF_UP))
 
 
 def parse_json_reply(txt: str):
@@ -47,11 +54,11 @@ def summarize(results: dict) -> dict:
     if v:
         out["vision_n"] = len(v)
         out["vision_valid_pct"] = round(100 * sum(x["valid"] for x in v) / len(v))
-        out["vision_med_s"] = round(statistics.median(x["sec"] for x in v), 2)
+        out["vision_med_s"] = r1(statistics.median(x["sec"] for x in v), 2)
     vo = results.get("voice")
     if vo:
-        out["voice_ttft_med_s"] = round(statistics.median(x["ttft"] for x in vo), 2)
-        out["voice_tps_med"] = round(statistics.median(x["tps"] for x in vo), 1)
+        out["voice_ttft_med_s"] = r1(statistics.median(x["ttft"] for x in vo), 2)
+        out["voice_tps_med"] = r1(statistics.median(x["tps"] for x in vo), 1)
     for lvl, a in (results.get("agent") or {}).items():
         n = len(a)
         out[f"agent_{lvl}"] = {k: f"{sum(x[k] for x in a)}/{n}" for k in ("sel", "args", "complete", "json_ok")}

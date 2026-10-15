@@ -62,3 +62,58 @@ tasks:
   - id: count_blocks
     prompt: How many planner blocks do I have tomorrow?
     expect: {select: [get_plan_blocks], args: [{tool: get_plan_blocks, args: {date: "2026-10-13"}}], final_contains: ["3", "three"]}
+  # --- expansion to 30 (2026-10-15) ---
+  - id: planner_end_time
+    prompt: What time does my deep work block end tomorrow?
+    expect: {select: [get_plan_blocks], args: [{tool: get_plan_blocks, args: {date: "2026-10-13"}}], final_contains: ["11:00", "11 am", "11am"]}
+  - id: calendar_today_empty
+    prompt: Any calendar events today?
+    expect: {select: [get_events], args: [{tool: get_events, args: {date: "2026-10-12"}}], final_contains: ["no ", "none", "nothing", "free", "don't"]}
+  - id: dentist_time
+    prompt: When is my dentist appointment tomorrow?
+    expect: {select: [get_events], args: [{tool: get_events, args: {date: "2026-10-13"}}], final_contains: ["9:30", "09:30"]}
+  - id: offsite_end
+    prompt: What time does the team offsite end on Wednesday?
+    expect: {select: [get_events], args: [{tool: get_events, args: {date: "2026-10-14"}}], final_contains: ["12:20"]}
+  - id: create_low_priority
+    prompt: "Create a low priority issue titled 'Clean the garage'."
+    expect: {select: [create_issue], args: [{tool: create_issue, args: {title: garage, priority: 4}}], final_contains: [task-99, created]}
+  - id: create_due_tomorrow
+    prompt: "Add an issue 'Submit expense report' due tomorrow."
+    expect: {select: [create_issue], args: [{tool: create_issue, args: {title: expense, due_date: "2026-10-13"}}], final_contains: [task-99, created]}
+  - id: create_high_priority
+    prompt: "File an issue 'Fix the leaky faucet' with high priority (2)."
+    expect: {select: [create_issue], args: [{tool: create_issue, args: {title: faucet, priority: 2}}], final_contains: [task-99, created]}
+  - id: move_by_id
+    prompt: Move planner block b3 to 16:00.
+    expect: {select: [move_block], args: [{tool: move_block, args: {block_id: b3, new_start: "16:00"}}], final_contains: []}
+  - id: move_deep_work_later
+    prompt: Push tomorrow's deep work block two hours later.
+    expect: {select: [get_plan_blocks, move_block], args: [{tool: move_block, args: {block_id: b1, new_start: "11:00"}}], final_contains: []}
+  - id: weather_umbrella
+    prompt: Should I bring an umbrella in San Diego?
+    expect: {select: [get_weather], args: [{tool: get_weather, args: {city: san diego}}], final_contains: ["no", "sunny", "not"]}
+  - id: weather_temp_math
+    prompt: What's the high in San Diego, and how many degrees above 60F is that?
+    expect: {select: [get_weather], args: [{tool: get_weather, args: {city: san diego}}], final_contains: ["12"]}
+  - id: no_tool_capital
+    prompt: What is the capital of France?
+    expect: {no_tools: true, final_contains: ["paris"]}
+  - id: no_tool_date_math
+    prompt: Today is Monday. What day of the week is it in three days? One word.
+    expect: {no_tools: true, final_contains: ["thursday"]}
+  - id: no_tool_unit
+    prompt: How many minutes are in 2.5 hours? Just the number.
+    expect: {no_tools: true, final_contains: ["150"]}
+  - id: gym_duration
+    prompt: How long is my gym block tomorrow, in minutes?
+    expect: {select: [get_plan_blocks], args: [{tool: get_plan_blocks, args: {date: "2026-10-13"}}], final_contains: ["60", "one hour", "1 hour"]}
+  - id: overlap_check_only
+    prompt: Does anything on my calendar tomorrow overlap a planner block? Don't change anything, just tell me which block.
+    expect: {select: [get_events, get_plan_blocks], args: [], final_contains: ["deep work", "b1"]}
+  - id: weather_then_issue
+    prompt: "Check the San Diego weather; if it's sunny, create an issue titled 'Go for a run' for tomorrow."
+    expect: {select: [get_weather, create_issue], args: [{tool: create_issue, args: {title: run, due_date: "2026-10-13"}}], final_contains: []}
+  - id: events_two_days
+    prompt: List my calendar events for tomorrow and Wednesday.
+    expect: {select: [get_events], args: [{tool: get_events, args: {date: "2026-10-13"}}, {tool: get_events, args: {date: "2026-10-14"}}], final_contains: [dentist]}

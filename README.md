@@ -40,7 +40,26 @@ Pick models or suites: `python -m bakeoff.run configs/default.yaml --models gemm
 
 Mac Studio, Apple M3 Ultra, 256 GB unified memory, macOS, Ollama (Metal).
 
-## Results (legacy run, 2026-10-12 to 10-14)
+## Results (re-run 2026-10-15, 30 agent tasks, public images)
+
+Ollama 0.40.2 on the M3 Ultra, seed 42, `--models gemma4:26b,qwen3.6:35b,gpt-oss:20b,qwen3.8:27b`.
+Full tables in [RESULTS.md](RESULTS.md); charts in [`charts/`](charts/) (`python scripts/charts.py results/runs charts`).
+
+| model | vision JSON valid | vision s/img (median) | voice TTFT (median) | voice tok/s | agent tasks complete (of 30) |
+|---|---|---|---|---|---|
+| qwen3.6:35b | 100% (2/2) | 2.73 | 0.06 s | 126.8 | 30 |
+| gemma4:26b | 100% (2/2) | 1.75 | 0.08 s | 113.1 | 28 |
+| qwen3.8:27b | 100% (2/2) | 6.64 | 0.20 s | 55.2 | 30 (low), 30 (high) |
+| gpt-oss:20b | n/a (text only) | - | 0.39 s | 54.2 | 29 (low), 30 (high) |
+
+![voice tok/s](charts/voice_tps.png) ![agent completion](charts/agent_complete.png)
+
+Not re-run: gemma3:27b and gpt-oss:120b are not installed on the reference machine (disk); their
+legacy numbers are below. Vision used only the 2 public images in `vision.yaml`; Ollama 0.40 rejects
+`format: json` for these image models (HTTP 501), so the suite retries without it and records
+`format_fallback: true`. Validity then relies on the prompt plus fence stripping.
+
+## Legacy results (2026-10-12 to 10-14, 9 agent tasks, private frames)
 
 See [RESULTS.md](RESULTS.md) for the generated tables (`make tables`). Highlights:
 
@@ -61,8 +80,9 @@ See [RESULTS.md](RESULTS.md) for the generated tables (`make tables`). Highlight
 - Legacy agent results cover the first 9 tasks. Their prompts were lightly anonymized for the public
   suite (names, banks and appointments replaced), and 3 new tasks were added; re-run before comparing.
 - gemma3:27b ran its agent tasks without native tool support, so its agent row is not comparable.
-- gpt-oss:20b and the full public-image vision run have not been executed yet.
-- Small sample sizes (20 frames, 10 prompts, 9 tasks); medians, not confidence intervals.
+- Medians round half-up (`scoring.r1`); qwen3.8 legacy voice tok/s is exactly 40.65, which Python `round()` printed as 40.6 in older RESULTS.md. Now 40.7 everywhere.
+- Vision sample is 2 images; add more public images to `vision.yaml` before drawing conclusions.
+- Small sample sizes (legacy: 20 frames, 10 prompts, 9 tasks; re-run: 2 images, 10 prompts, 30 tasks); medians, not confidence intervals.
 - gpt-oss:120b's first voice prompt includes model load time (TTFT ~37 s); the median excludes the effect.
 
 ## Layout

@@ -1,0 +1,1183 @@
+{
+ "model": "qwen3.8:27b",
+ "digest": "47951e4a666180bc2aedfc93c169472f2de783696fe196efbf063f5730ecf163",
+ "caps": [
+  "completion",
+  "vision",
+  "tools",
+  "thinking"
+ ],
+ "seed": 42,
+ "host": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+ "started": "2026-10-15T13:10:26-0700",
+ "vision": [
+  {
+   "image": "data/public_images/cat.jpg",
+   "sec": 10.86241102218628,
+   "valid": true,
+   "format_fallback": true,
+   "raw": "{\n  \"description\": \"An orange tabby cat is sitting and looking directly at the camera with wide green eyes. The background is blurred, showing a red hose on a light-colored surface.\",\n  \"activity\": \"looking\",\n  \"people\": 0,\n  \"pets\": 1\n}"
+  },
+  {
+   "image": "data/public_images/dog.jpg",
+   "sec": 2.408306121826172,
+   "valid": true,
+   "format_fallback": true,
+   "raw": "{ \"description\": \"A light-colored Labrador Retriever is standing on a grassy field. The dog is looking to the side with its tail raised.\", \"activity\": \"standing\", \"people\": 0, \"pets\": 1 }"
+  }
+ ],
+ "voice": [
+  {
+   "prompt": "Hey, what's a good quick lunch I can make in ten minutes?",
+   "ttft": 0.32094907760620117,
+   "tps": 54.29992246476188,
+   "reply": "Try a turkey and cheese wrap with some fresh spinach and mustard. It takes less than five minutes to assemble and is super filling. Just grab a tortilla, pile on the ingredients, and roll it up tight."
+  },
+  {
+   "prompt": "Remind me why sleep matters so much for focus.",
+   "ttft": 0.303386926651001,
+   "tps": 55.48677998816396,
+   "reply": "Sleep helps your brain clear out waste and consolidate memories, which is essential for sharp attention. Without it, your cognitive performance drops significantly, making it hard to concentrate on tasks. So, getting enough rest is the best way to keep your mind fresh and focused."
+  },
+  {
+   "prompt": "Tell me a short joke about computers.",
+   "ttft": 0.2009718418121338,
+   "tps": 47.78918020376655,
+   "reply": "Why did the computer go to the doctor? It had a virus!\nI hope that made you smile."
+  },
+  {
+   "prompt": "What's the difference between a latte and a cappuccino?",
+   "ttft": 0.19778108596801758,
+   "tps": 69.57357097769004,
+   "reply": "A cappuccino has equal parts espresso, steamed milk, and a thick layer of foam, while a latte has much more steamed milk and only a thin layer of foam. So, a latte is creamier and milder, whereas a cappuccino is stronger and airier."
+  },
+  {
+   "prompt": "I'm feeling a little unmotivated today. Any quick tip?",
+   "ttft": 0.20119619369506836,
+   "tps": 54.97035981020796,
+   "reply": "Try the two-minute rule: commit to doing just two minutes of the task, and often you'll find the momentum to keep going. Be kind to yourself, as low-energy days are perfectly normal."
+  },
+  {
+   "prompt": "How long should I boil an egg for a jammy yolk?",
+   "ttft": 0.20208287239074707,
+   "tps": 59.27810381912841,
+   "reply": "For a jammy yolk, boil your eggs for about six and a half to seven minutes. This gives you a soft, gooey center that pairs perfectly with a firm white. Just make sure to start them from cold water for the most even cooking."
+  },
+  {
+   "prompt": "Give me one fun fact about octopuses.",
+   "ttft": 0.1995830535888672,
+   "tps": 62.586489267665584,
+   "reply": "Did you know that octopuses have three hearts and blue blood? Their blood is blue because it uses copper instead of iron to transport oxygen."
+  },
+  {
+   "prompt": "What's a good way to wind down before bed?",
+   "ttft": 0.20576095581054688,
+   "tps": 58.88593015955489,
+   "reply": "Try reading a physical book or listening to calming music for about twenty minutes. This helps your brain shift away from the stress of the day and into a more relaxed state."
+  },
+  {
+   "prompt": "Should I go for a walk or a run if I only have twenty minutes?",
+   "ttft": 0.20285391807556152,
+   "tps": 51.20441803188569,
+   "reply": "Honestly, a brisk walk is a great choice if you only have twenty minutes. It helps your heart without leaving you too exhausted to get on with your day. Just move at a pace that makes you breathe a little harder!"
+  },
+  {
+   "prompt": "Summarize what a credit score is in two sentences.",
+   "ttft": 0.20743107795715332,
+   "tps": 54.67545041920367,
+   "reply": "A credit score is a three-digit number that lenders use to gauge how likely you are to pay back money on time. It's essentially a report card for your financial responsibility, helping determine whether you'll get approved for loans and at what interest rate."
+  }
+ ],
+ "agent": {
+  "low": [
+   {
+    "id": "planner_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 6.148324251174927,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Here's what's on your planner for tomorrow, **Tuesday 2026-10-13**:\n\n| Time | Block |\n|------|-------|\n| 09:00\u201311:00 | Deep work: harness |\n| 12:00\u201313:00 | Gym |\n| 15:00\u201315:30 | Call the bank |\n\nThree blocks total, with a free gap from 11:00\u201312:00 and 13:00\u201315:00."
+   },
+   {
+    "id": "calendar_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 5.0432679653167725,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "Yes, you have one calendar event on Wednesday, October 14:\n\n- **Team offsite** \u2014 11:30 to 12:20"
+   },
+   {
+    "id": "create_urgent",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.7030279636383057,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "due_date": "2026-10-13",
+       "priority": 1,
+       "title": "Call the bank about fees"
+      }
+     ]
+    ],
+    "final": "Done! Created issue **TASK-99** \u2014 \"Call the bank about fees\" with urgent priority, due 2026-10-13."
+   },
+   {
+    "id": "move_gym",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 5.231683254241943,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b2",
+       "new_start": "17:00"
+      }
+     ]
+    ],
+    "final": "Done! Your Gym block tomorrow (2026-10-13) has been moved to 17:00."
+   },
+   {
+    "id": "resolve_overlap",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 7.916330099105835,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b1",
+       "new_start": "10:30"
+      }
+     ]
+    ],
+    "final": "Done. The Dentist event (09:30\u201310:30) overlapped with \"Deep work: harness\" (09:00\u201311:00), so I moved that block to start at 10:30. The other blocks (Gym, Call the bank) don't overlap the event, so they were left unchanged."
+   },
+   {
+    "id": "weather",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.0077149868011475,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "The weather in San Diego is **sunny** with a high of **72\u00b0F**."
+   },
+   {
+    "id": "no_tool_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.1377668380737305,
+    "calls": [],
+    "final": "17 \u00d7 23 = **391**"
+   },
+   {
+    "id": "relative_due_date",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.8258509635925293,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "priority": 2,
+       "title": "Renew library card",
+       "due_date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "Done! I've created the issue:\n\n- **Title:** Renew library card\n- **Priority:** 2\n- **Due:** Wednesday, 2026-10-14\n- **ID:** TASK-99"
+   },
+   {
+    "id": "multi_step",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 6.273621082305908,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b3",
+       "new_start": "14:00"
+      }
+     ],
+     [
+      "create_issue",
+      {
+       "priority": 4,
+       "title": "Follow up with the bank"
+      }
+     ]
+    ],
+    "final": "Done! Here's what I did:\n\n1. **Moved \"Call the bank\"** from 15:00 \u2192 **14:00** on tomorrow (2026-10-13).\n2. **Created issue** \"Follow up with the bank\" with low priority (4) \u2014 [TASK-99](https://tracker.example/TASK-99)."
+   },
+   {
+    "id": "weather_no_city_default",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.7954518795013428,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "Yes."
+   },
+   {
+    "id": "no_tool_chitchat",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 0.7071099281311035,
+    "calls": [],
+    "final": "Hi!"
+   },
+   {
+    "id": "count_blocks",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.230247974395752,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "You have **3** planner blocks tomorrow (2026-10-13):\n\n1. **Deep work: harness** \u2014 09:00\u201311:00\n2. **Gym** \u2014 12:00\u201313:00\n3. **Call the bank** \u2014 15:00\u201315:30"
+   },
+   {
+    "id": "planner_end_time",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.0259287357330322,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Your deep work block (\"Deep work: harness\") tomorrow ends at **11:00**."
+   },
+   {
+    "id": "calendar_today_empty",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.225895881652832,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-12"
+      }
+     ]
+    ],
+    "final": "No calendar events today (Monday, 2026-10-12). Your calendar is clear."
+   },
+   {
+    "id": "dentist_time",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.4596078395843506,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Your dentist appointment tomorrow (Tuesday, 2026-10-13) is from **09:30 to 10:30**."
+   },
+   {
+    "id": "offsite_end",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.924243927001953,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "The team offsite on Wednesday (2026-10-14) ends at **12:20**."
+   },
+   {
+    "id": "create_low_priority",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.9017550945281982,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "priority": 4,
+       "title": "Clean the garage"
+      }
+     ]
+    ],
+    "final": "Done! Created a low-priority issue **\"Clean the garage\"** (TASK-99, priority 4)."
+   },
+   {
+    "id": "create_due_tomorrow",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.2663259506225586,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "due_date": "2026-10-13",
+       "title": "Submit expense report"
+      }
+     ]
+    ],
+    "final": "Done! I've created the issue **\"Submit expense report\"** (TASK-99) with a due date of **2026-10-13**."
+   },
+   {
+    "id": "create_high_priority",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.849647045135498,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "priority": 2,
+       "title": "Fix the leaky faucet"
+      }
+     ]
+    ],
+    "final": "Done! I've created the issue **\"Fix the leaky faucet\"** with priority 2 (high). It's been assigned ID **TASK-99**."
+   },
+   {
+    "id": "move_by_id",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.3189539909362793,
+    "calls": [
+     [
+      "move_block",
+      {
+       "block_id": "b3",
+       "new_start": "16:00"
+      }
+     ]
+    ],
+    "final": "Done. Block **b3** has been moved to **16:00**."
+   },
+   {
+    "id": "move_deep_work_later",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.771596908569336,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b1",
+       "new_start": "11:00"
+      }
+     ]
+    ],
+    "final": "Done. I moved tomorrow's \"Deep work: harness\" block from 09:00 to 11:00."
+   },
+   {
+    "id": "weather_umbrella",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.18310809135437,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "No umbrella needed \u2014 San Diego is forecast to be **sunny** with a high of 72\u00b0F. \u2600\ufe0f"
+   },
+   {
+    "id": "weather_temp_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.137948989868164,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "The high in San Diego is **72\u00b0F**, which is **12 degrees above 60\u00b0F**."
+   },
+   {
+    "id": "no_tool_capital",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.1697990894317627,
+    "calls": [],
+    "final": "The capital of France is **Paris**."
+   },
+   {
+    "id": "no_tool_date_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 0.7755939960479736,
+    "calls": [],
+    "final": "Thursday"
+   },
+   {
+    "id": "no_tool_unit",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 0.8162398338317871,
+    "calls": [],
+    "final": "150"
+   },
+   {
+    "id": "gym_duration",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.456249952316284,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Your gym block tomorrow is **60 minutes** (12:00\u201313:00)."
+   },
+   {
+    "id": "overlap_check_only",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.8473217487335205,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Yes \u2014 your **Dentist** appointment (09:30\u201310:30) overlaps with planner block **b1 \"Deep work: harness\"** (09:00\u201311:00)."
+   },
+   {
+    "id": "weather_then_issue",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.313292026519775,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ],
+     [
+      "create_issue",
+      {
+       "title": "Go for a run",
+       "due_date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "San Diego is sunny (high 72\u00b0F), so I've created the issue **\"Go for a run\"** due tomorrow (2026-10-13). Task ID: TASK-99."
+   },
+   {
+    "id": "events_two_days",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.7448830604553223,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "get_events",
+      {
+       "date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "Here are your calendar events:\n\n**Tomorrow (Tuesday, 2026-10-13):**\n- **Dentist** \u2014 09:30\u201310:30\n\n**Wednesday (2026-10-14):**\n- **Team offsite** \u2014 11:30\u201312:20"
+   }
+  ],
+  "high": [
+   {
+    "id": "planner_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 5.922867774963379,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Here's what's on your planner for **tomorrow, Tuesday 2026-10-13**:\n\n| Time | Block |\n|------|-------|\n| 09:00 \u2013 11:00 | Deep work: harness |\n| 12:00 \u2013 13:00 | Gym |\n| 15:00 \u2013 15:30 | Call the bank |\n\nThree blocks total, with a free gap between 11:00\u201312:00 and 13:00\u201315:00. Let me know if you'd like "
+   },
+   {
+    "id": "calendar_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.597421646118164,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "Yes, you have one calendar event on Wednesday, October 14:\n\n- **Team offsite** \u2014 11:30 to 12:20"
+   },
+   {
+    "id": "create_urgent",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.4051856994628906,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "priority": 1,
+       "title": "Call the bank about fees",
+       "due_date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Done! I've created the issue **\"Call the bank about fees\"** with urgent priority (1), due **2026-10-13**. It's been assigned ID **TASK-99**."
+   },
+   {
+    "id": "move_gym",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.8762660026550293,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b2",
+       "new_start": "17:00"
+      }
+     ]
+    ],
+    "final": "Done \u2014 your Gym block tomorrow (2026-10-13) is now scheduled for 17:00."
+   },
+   {
+    "id": "resolve_overlap",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 5.9849278926849365,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b1",
+       "new_start": "10:30"
+      }
+     ]
+    ],
+    "final": "Done. The Dentist event (09:30\u201310:30) overlapped with \"Deep work: harness\" (09:00\u201311:00), so I moved that block to start at 10:30. The other blocks (Gym, Call the bank) don't overlap any events."
+   },
+   {
+    "id": "weather",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.9392099380493164,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "The weather in San Diego is **sunny** with a high of **72\u00b0F**."
+   },
+   {
+    "id": "no_tool_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.155679702758789,
+    "calls": [],
+    "final": "17 \u00d7 23 = **391**"
+   },
+   {
+    "id": "relative_due_date",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.9285318851470947,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "priority": 2,
+       "title": "Renew library card",
+       "due_date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "Done! I've created the issue **\"Renew library card\"** (TASK-99) with priority 2, due Wednesday 2026-10-14."
+   },
+   {
+    "id": "multi_step",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 5.210019111633301,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b3",
+       "new_start": "14:00"
+      }
+     ],
+     [
+      "create_issue",
+      {
+       "priority": 4,
+       "title": "Follow up with the bank"
+      }
+     ]
+    ],
+    "final": "Done! Here's what I did:\n\n1. **Moved \"Call the bank\"** from 15:00 to **14:00** (one hour earlier) on tomorrow's planner.\n2. **Created a low-priority issue** \"Follow up with the bank\" (TASK-99, priority 4)."
+   },
+   {
+    "id": "weather_no_city_default",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.9828710556030273,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "Yes."
+   },
+   {
+    "id": "no_tool_chitchat",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 0.6623799800872803,
+    "calls": [],
+    "final": "Hi"
+   },
+   {
+    "id": "count_blocks",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.1315979957580566,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "You have **3 planner blocks** tomorrow (Tuesday, 2026-10-13):\n\n1. **Deep work: harness** \u2014 09:00\u201311:00\n2. **Gym** \u2014 12:00\u201313:00\n3. **Call the bank** \u2014 15:00\u201315:30"
+   },
+   {
+    "id": "planner_end_time",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.3531179428100586,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Your deep work block tomorrow (Tuesday, 2026-10-13) ends at **11:00 AM**. It's scheduled from 09:00 to 11:00."
+   },
+   {
+    "id": "calendar_today_empty",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.1807408332824707,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-12"
+      }
+     ]
+    ],
+    "final": "No calendar events are scheduled for today, Monday 2026-10-12."
+   },
+   {
+    "id": "dentist_time",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.362765073776245,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Your dentist appointment tomorrow (Tuesday, October 13) is from **9:30 AM to 10:30 AM**."
+   },
+   {
+    "id": "offsite_end",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.7221732139587402,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "The team offsite on Wednesday (2026-10-14) ends at **12:20 PM**."
+   },
+   {
+    "id": "create_low_priority",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.147934913635254,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "priority": 4,
+       "title": "Clean the garage"
+      }
+     ]
+    ],
+    "final": "Created low-priority issue **\"Clean the garage\"** (TASK-99, priority 4)."
+   },
+   {
+    "id": "create_due_tomorrow",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.8804690837860107,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "due_date": "2026-10-13",
+       "title": "Submit expense report"
+      }
+     ]
+    ],
+    "final": "Done! I've created the issue **\"Submit expense report\"** (TASK-99) with a due date of **tomorrow, 2026-10-13**."
+   },
+   {
+    "id": "create_high_priority",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.459834098815918,
+    "calls": [
+     [
+      "create_issue",
+      {
+       "priority": 2,
+       "title": "Fix the leaky faucet"
+      }
+     ]
+    ],
+    "final": "Done! I've filed the issue **\"Fix the leaky faucet\"** with high priority (2). It's been assigned ID **TASK-99** and can be found at https://tracker.example/TASK-99."
+   },
+   {
+    "id": "move_by_id",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.4157330989837646,
+    "calls": [
+     [
+      "move_block",
+      {
+       "block_id": "b3",
+       "new_start": "16:00"
+      }
+     ]
+    ],
+    "final": "Done! Planner block **b3** has been moved to **16:00**."
+   },
+   {
+    "id": "move_deep_work_later",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.844264268875122,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "move_block",
+      {
+       "block_id": "b1",
+       "new_start": "11:00"
+      }
+     ]
+    ],
+    "final": "Done! I moved tomorrow's \"Deep work: harness\" block from 09:00 to 11:00 (two hours later). It will now run 11:00\u201313:00."
+   },
+   {
+    "id": "weather_umbrella",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.1592798233032227,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "No umbrella needed! San Diego's forecast is **sunny** with a high of **72\u00b0F** \u2014 clear skies, no rain in sight. \u2600\ufe0f"
+   },
+   {
+    "id": "weather_temp_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.150343894958496,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ]
+    ],
+    "final": "The high in San Diego is **72\u00b0F**, which is **12 degrees above 60\u00b0F**."
+   },
+   {
+    "id": "no_tool_capital",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.0178489685058594,
+    "calls": [],
+    "final": "The capital of France is **Paris**."
+   },
+   {
+    "id": "no_tool_date_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 0.7226948738098145,
+    "calls": [],
+    "final": "Thursday"
+   },
+   {
+    "id": "no_tool_unit",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 0.7144577503204346,
+    "calls": [],
+    "final": "150"
+   },
+   {
+    "id": "gym_duration",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.494170904159546,
+    "calls": [
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Your gym block tomorrow (2026-10-13) runs from 12:00 to 13:00, which is **60 minutes**."
+   },
+   {
+    "id": "overlap_check_only",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.5975000858306885,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "get_plan_blocks",
+      {
+       "date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "Yes \u2014 the **Dentist** event (09:30\u201310:30) overlaps planner block **b1 \"Deep work: harness\"** (09:00\u201311:00). No other blocks are affected."
+   },
+   {
+    "id": "weather_then_issue",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.06265115737915,
+    "calls": [
+     [
+      "get_weather",
+      {
+       "city": "San Diego"
+      }
+     ],
+     [
+      "create_issue",
+      {
+       "title": "Go for a run",
+       "due_date": "2026-10-13"
+      }
+     ]
+    ],
+    "final": "San Diego is sunny (72\u00b0F high), so I created the issue **\"Go for a run\"** due tomorrow (2026-10-13) \u2014 TASK-99."
+   },
+   {
+    "id": "events_two_days",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.7561259269714355,
+    "calls": [
+     [
+      "get_events",
+      {
+       "date": "2026-10-13"
+      }
+     ],
+     [
+      "get_events",
+      {
+       "date": "2026-10-14"
+      }
+     ]
+    ],
+    "final": "Here are your calendar events:\n\n**Tomorrow (Tuesday, 2026-10-13):**\n- **Dentist** \u2014 09:30 to 10:30\n\n**Wednesday (2026-10-14):**\n- **Team offsite** \u2014 11:30 to 12:20"
+   }
+  ]
+ }
+}

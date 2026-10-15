@@ -46,3 +46,9 @@ def test_summarize():
     assert s["vision_valid_pct"] == 50 and s["vision_med_s"] == 2
     assert s["voice_tps_med"] == 60.0
     assert s["agent_low"]["complete"] == "0/1"
+
+
+def test_round_half_up_resolves_40_65():
+    # legacy qwen3.8 voice median tok/s is (40.4 + 40.9) / 2 = 40.65
+    assert scoring.r1(40.65) == 40.7
+    assert scoring.summarize({"voice": [{"ttft": 0.2, "tps": 40.4}, {"ttft": 0.2, "tps": 40.9}]})["voice_tps_med"] == 40.7
