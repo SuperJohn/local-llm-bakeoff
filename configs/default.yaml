@@ -1,0 +1,14 @@
+# Pinned models. `digest` = first 12 hex of `ollama list` ID on the reference machine (2026-10-12).
+ollama_url: http://127.0.0.1:11434
+seed: 42
+models:
+  - {tag: "gemma4:26b",   digest: "48eb98ec778c"}
+  - {tag: "qwen3.6:35b",  digest: "599a7133f2e3"}
+  - {tag: "qwen3.8:27b",  digest: "47951e4a6661", think_levels: [low, high]}
+  - {tag: "gemma3:27b"}
+  - {tag: "gpt-oss:20b",  digest: "17052f91a42e", think_levels: [low, high]}
+  - {tag: "gpt-oss:120b", think_levels: [low, high]}
+suites:
+  vision: {file: suites/vision.yaml, temperature: 0.2}
+  voice:  {file: suites/voice.yaml, temperature: 0.6}
+  agent:  {file: suites/agent.yaml}

@@ -1,0 +1,8 @@
+# PUBLIC images only (Wikimedia Commons). Fetch with `make images`; files are git-ignored.
+prompt: >-
+  Describe this image for an activity log. Reply as JSON:
+  {"description": "<2 short sentences: who/what is present and what they are doing>",
+  "activity": "<one or two words>", "people": <int>, "pets": <int>}
+images:
+  - {path: data/public_images/cat.jpg, url: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg", license: "CC BY-SA (Wikimedia Commons)"}
+  - {path: data/public_images/dog.jpg, url: "https://upload.wikimedia.org/wikipedia/commons/2/26/YellowLabradorLooking_new.jpg", license: "CC BY-SA (Wikimedia Commons)"}

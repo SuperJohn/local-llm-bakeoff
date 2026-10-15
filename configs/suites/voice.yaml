@@ -1,0 +1,12 @@
+system: You are a friendly voice assistant. Reply in one to three short spoken sentences.
+prompts:
+  - Hey, what's a good quick lunch I can make in ten minutes?
+  - Remind me why sleep matters so much for focus.
+  - Tell me a short joke about computers.
+  - What's the difference between a latte and a cappuccino?
+  - I'm feeling a little unmotivated today. Any quick tip?
+  - How long should I boil an egg for a jammy yolk?
+  - Give me one fun fact about octopuses.
+  - What's a good way to wind down before bed?
+  - Should I go for a walk or a run if I only have twenty minutes?
+  - Summarize what a credit score is in two sentences.

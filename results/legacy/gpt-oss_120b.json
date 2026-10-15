@@ -1,0 +1,221 @@
+{
+ "model": "gpt-oss:120b",
+ "caps": [
+  "completion",
+  "tools",
+  "thinking"
+ ],
+ "source": "legacy run 2026-10-12/14 (private frames; captions withheld)",
+ "voice": [
+  {
+   "prompt_idx": 0,
+   "ttft": 36.824,
+   "tps": 66.4,
+   "tokens": 62
+  },
+  {
+   "prompt_idx": 1,
+   "ttft": 0.538,
+   "tps": 67.0,
+   "tokens": 47
+  },
+  {
+   "prompt_idx": 2,
+   "ttft": 0.628,
+   "tps": 67.0,
+   "tokens": 45
+  },
+  {
+   "prompt_idx": 3,
+   "ttft": 0.552,
+   "tps": 66.2,
+   "tokens": 76
+  },
+  {
+   "prompt_idx": 4,
+   "ttft": 0.533,
+   "tps": 67.8,
+   "tokens": 42
+  },
+  {
+   "prompt_idx": 5,
+   "ttft": 0.722,
+   "tps": 67.7,
+   "tokens": 52
+  },
+  {
+   "prompt_idx": 6,
+   "ttft": 0.697,
+   "tps": 54.8,
+   "tokens": 46
+  },
+  {
+   "prompt_idx": 7,
+   "ttft": 0.589,
+   "tps": 60.0,
+   "tokens": 47
+  },
+  {
+   "prompt_idx": 8,
+   "ttft": 0.562,
+   "tps": 34.7,
+   "tokens": 69
+  },
+  {
+   "prompt_idx": 9,
+   "ttft": 0.602,
+   "tps": 67.2,
+   "tokens": 62
+  }
+ ],
+ "agent": {
+  "low": [
+   {
+    "id": "planner_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.15
+   },
+   {
+    "id": "calendar_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.52
+   },
+   {
+    "id": "create_urgent",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.87
+   },
+   {
+    "id": "move_gym",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.67
+   },
+   {
+    "id": "resolve_overlap",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.24
+   },
+   {
+    "id": "weather",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.06
+   },
+   {
+    "id": "no_tool_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 0.42
+   },
+   {
+    "id": "relative_due_date",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 1.9
+   },
+   {
+    "id": "multi_step",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.47
+   }
+  ],
+  "high": [
+   {
+    "id": "planner_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.54
+   },
+   {
+    "id": "calendar_read",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 4.57
+   },
+   {
+    "id": "create_urgent",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.79
+   },
+   {
+    "id": "move_gym",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 5.46
+   },
+   {
+    "id": "resolve_overlap",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 16.03
+   },
+   {
+    "id": "weather",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.08
+   },
+   {
+    "id": "no_tool_math",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 2.29
+   },
+   {
+    "id": "relative_due_date",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 3.82
+   },
+   {
+    "id": "multi_step",
+    "sel": true,
+    "args": true,
+    "complete": true,
+    "json_ok": true,
+    "sec": 15.76
+   }
+  ]
+ }
+}

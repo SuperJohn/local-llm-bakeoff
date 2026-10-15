@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+data/public_images/*
+!data/public_images/.gitkeep
+results/smoke/
+.DS_Store

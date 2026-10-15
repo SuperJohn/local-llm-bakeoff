@@ -1,0 +1,228 @@
+{
+ "model": "gemma3:27b",
+ "caps": [
+  "completion",
+  "vision"
+ ],
+ "source": "legacy run 2026-10-12/14 (private frames; captions withheld)",
+ "vision": [
+  {
+   "sec": 3.205,
+   "valid": true
+  },
+  {
+   "sec": 4.203,
+   "valid": true
+  },
+  {
+   "sec": 4.014,
+   "valid": true
+  },
+  {
+   "sec": 3.946,
+   "valid": true
+  },
+  {
+   "sec": 7.88,
+   "valid": true
+  },
+  {
+   "sec": 4.161,
+   "valid": true
+  },
+  {
+   "sec": 4.064,
+   "valid": true
+  },
+  {
+   "sec": 7.986,
+   "valid": true
+  },
+  {
+   "sec": 4.064,
+   "valid": true
+  },
+  {
+   "sec": 3.909,
+   "valid": true
+  },
+  {
+   "sec": 7.798,
+   "valid": true
+  },
+  {
+   "sec": 3.869,
+   "valid": true
+  },
+  {
+   "sec": 3.601,
+   "valid": true
+  },
+  {
+   "sec": 7.654,
+   "valid": true
+  },
+  {
+   "sec": 3.891,
+   "valid": true
+  },
+  {
+   "sec": 4.178,
+   "valid": true
+  },
+  {
+   "sec": 7.606,
+   "valid": true
+  },
+  {
+   "sec": 3.876,
+   "valid": true
+  },
+  {
+   "sec": 4.287,
+   "valid": true
+  },
+  {
+   "sec": 8.156,
+   "valid": true
+  }
+ ],
+ "voice": [
+  {
+   "prompt_idx": 0,
+   "ttft": 0.417,
+   "tps": 25.6,
+   "tokens": 29
+  },
+  {
+   "prompt_idx": 1,
+   "ttft": 0.417,
+   "tps": 25.4,
+   "tokens": 44
+  },
+  {
+   "prompt_idx": 2,
+   "ttft": 0.417,
+   "tps": 25.4,
+   "tokens": 34
+  },
+  {
+   "prompt_idx": 3,
+   "ttft": 0.419,
+   "tps": 24.0,
+   "tokens": 52
+  },
+  {
+   "prompt_idx": 4,
+   "ttft": 4.587,
+   "tps": 24.9,
+   "tokens": 39
+  },
+  {
+   "prompt_idx": 5,
+   "ttft": 0.418,
+   "tps": 23.8,
+   "tokens": 47
+  },
+  {
+   "prompt_idx": 6,
+   "ttft": 0.422,
+   "tps": 24.1,
+   "tokens": 54
+  },
+  {
+   "prompt_idx": 7,
+   "ttft": 0.418,
+   "tps": 24.6,
+   "tokens": 37
+  },
+  {
+   "prompt_idx": 8,
+   "ttft": 0.421,
+   "tps": 23.3,
+   "tokens": 51
+  },
+  {
+   "prompt_idx": 9,
+   "ttft": 4.314,
+   "tps": 24.8,
+   "tokens": 55
+  }
+ ],
+ "agent": {
+  "default": [
+   {
+    "id": "planner_read",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "calendar_read",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "create_urgent",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "move_gym",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "resolve_overlap",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "weather",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "no_tool_math",
+    "sel": true,
+    "args": true,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "relative_due_date",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   },
+   {
+    "id": "multi_step",
+    "sel": false,
+    "args": false,
+    "complete": false,
+    "json_ok": true,
+    "sec": 0.0
+   }
+  ]
+ }
+}

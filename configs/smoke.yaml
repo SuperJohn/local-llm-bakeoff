@@ -1,0 +1,7 @@
+# Fast sanity run: one small model, all suites.
+seed: 42
+models:
+  - {tag: "gpt-oss:20b", think_levels: [low]}
+suites:
+  voice: {file: suites/voice.yaml}
+  agent: {file: suites/agent.yaml}

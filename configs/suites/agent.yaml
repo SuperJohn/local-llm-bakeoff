@@ -1,0 +1,64 @@
+# Synthetic planner/calendar/tracker tools with deterministic fixtures. No real accounts.
+system: >-
+  You are a planning assistant. Today is Monday 2026-10-12; tomorrow is 2026-10-13.
+  Use tools when needed; do not ask clarifying questions. When done, answer briefly.
+tools:
+  - {name: get_plan_blocks, description: List planner time blocks for a date, params: {date: {type: string, description: YYYY-MM-DD}}, required: [date]}
+  - {name: move_block, description: Move a planner block to a new start time, params: {block_id: {type: string}, new_start: {type: string, description: "HH:MM 24h"}}, required: [block_id, new_start]}
+  - {name: create_issue, description: Create a task-tracker issue, params: {title: {type: string}, priority: {type: integer, description: "1 urgent..4 low"}, due_date: {type: string, description: YYYY-MM-DD}}, required: [title]}
+  - {name: get_events, description: List calendar events for a date, params: {date: {type: string, description: YYYY-MM-DD}}, required: [date]}
+  - {name: get_weather, description: Get forecast for a city, params: {city: {type: string}}, required: [city]}
+fixtures:
+  get_plan_blocks:
+    by: date
+    values:
+      "2026-10-13":
+        - {id: b1, title: "Deep work: harness", start: "09:00", end: "11:00"}
+        - {id: b2, title: Gym, start: "12:00", end: "13:00"}
+        - {id: b3, title: Call the bank, start: "15:00", end: "15:30"}
+  get_events:
+    by: date
+    values:
+      "2026-10-13": [{title: Dentist, start: "09:30", end: "10:30"}]
+      "2026-10-14": [{title: Team offsite, start: "11:30", end: "12:20"}]
+  move_block: {echo: true, extra: {ok: true}}
+  create_issue: {echo: true, extra: {id: TASK-99, url: "https://tracker.example/TASK-99"}}
+  get_weather: {city: San Diego, high_f: 72, sky: sunny}
+tasks:
+  - id: planner_read
+    prompt: What's on my planner tomorrow?
+    expect: {select: [get_plan_blocks], args: [{tool: get_plan_blocks, args: {date: "2026-10-13"}}], final_contains: [deep work, harness]}
+  - id: calendar_read
+    prompt: Do I have any calendar events on Wednesday?
+    expect: {select: [get_events], args: [{tool: get_events, args: {date: "2026-10-14"}}], final_contains: [offsite]}
+  - id: create_urgent
+    prompt: "Create an issue titled 'Call the bank about fees', urgent priority, due 2026-10-13."
+    expect: {select: [create_issue], args: [{tool: create_issue, args: {title: bank, priority: 1, due_date: "2026-10-13"}}], final_contains: [task-99, created]}
+  - id: move_gym
+    prompt: Move my gym block tomorrow to 17:00.
+    expect: {select: [get_plan_blocks, move_block], args: [{tool: move_block, args: {block_id: b2, new_start: "17:00"}}], final_contains: []}
+  - id: resolve_overlap
+    prompt: Tomorrow, check my calendar and if anything overlaps a planner block, move that block to start right after the event ends.
+    expect: {select: [get_events, get_plan_blocks, move_block], args: [{tool: move_block, args: {block_id: b1, new_start: "10:30"}}], final_contains: []}
+  - id: weather
+    prompt: What's the weather in San Diego?
+    expect: {select: [get_weather], args: [{tool: get_weather, args: {city: san diego}}], final_contains: ["72"]}
+  - id: no_tool_math
+    prompt: What's 17 times 23?
+    expect: {no_tools: true, final_contains: ["391"]}
+  - id: relative_due_date
+    prompt: Make an issue to renew the library card by Wednesday, priority 2.
+    expect: {select: [create_issue], args: [{tool: create_issue, args: {priority: 2, due_date: "2026-10-14"}}], final_contains: [task-99, created]}
+  - id: multi_step
+    prompt: "Look at tomorrow's planner and move the Call the bank block one hour earlier, then create a low-priority issue titled 'Follow up with the bank'."
+    expect: {select: [move_block, create_issue], args: [{tool: move_block, args: {block_id: b3, new_start: "14:00"}}, {tool: create_issue, args: {title: follow up, priority: 4}}], final_contains: []}
+  # --- expansion toward ~30 tasks (P2.1); not in the 2026-10-12 legacy run ---
+  - id: weather_no_city_default
+    prompt: Is it going to be sunny in San Diego tomorrow? Just yes or no.
+    expect: {select: [get_weather], args: [{tool: get_weather, args: {city: san diego}}], final_contains: ["yes"]}
+  - id: no_tool_chitchat
+    prompt: Say hi in one word.
+    expect: {no_tools: true, final_contains: ["hi", "hello"]}
+  - id: count_blocks
+    prompt: How many planner blocks do I have tomorrow?
+    expect: {select: [get_plan_blocks], args: [{tool: get_plan_blocks, args: {date: "2026-10-13"}}], final_contains: ["3", "three"]}
