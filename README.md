@@ -98,3 +98,9 @@ tests/          pytest, no Ollama required
 ## License
 
 MIT, see [LICENSE](LICENSE).
+
+## Cloudflare Pages (portfolio demo)
+
+Static results site root: `site/`. Aggregate JSON: `demo/data/summary.json` (mirrored at `site/data/summary.json`).
+
+Suggested Pages project: **local-llm-bakeoff** · Production branch `main` · Framework none · Root directory `site`.

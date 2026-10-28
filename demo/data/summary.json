@@ -1,0 +1,210 @@
+{
+  "title": "Local LLM bake-off",
+  "hardware": "Mac Studio M3 Ultra, 256 GB unified memory",
+  "generated": "2026-10-15",
+  "note": "Aggregate metrics only. Public sample images (cat/dog). No API keys or private paths.",
+  "runs": [
+    {
+      "model": "gemma4:26b",
+      "vision_n": 2,
+      "vision_json_valid_pct": 100.0,
+      "vision_median_s": 1.75,
+      "voice_ttft_median_s": 0.08,
+      "voice_tps_median": 113.1,
+      "agent": [
+        {
+          "think": "default",
+          "n": 30,
+          "tool_selected": 30,
+          "args_correct": 30,
+          "task_complete": 28,
+          "valid_json": 30
+        }
+      ]
+    },
+    {
+      "model": "gpt-oss:20b",
+      "vision_n": 0,
+      "vision_json_valid_pct": null,
+      "vision_median_s": null,
+      "voice_ttft_median_s": 0.39,
+      "voice_tps_median": 54.2,
+      "agent": [
+        {
+          "think": "low",
+          "n": 30,
+          "tool_selected": 30,
+          "args_correct": 28,
+          "task_complete": 29,
+          "valid_json": 30
+        },
+        {
+          "think": "high",
+          "n": 30,
+          "tool_selected": 30,
+          "args_correct": 29,
+          "task_complete": 30,
+          "valid_json": 30
+        }
+      ]
+    },
+    {
+      "model": "qwen3.6:35b",
+      "vision_n": 2,
+      "vision_json_valid_pct": 100.0,
+      "vision_median_s": 2.73,
+      "voice_ttft_median_s": 0.06,
+      "voice_tps_median": 126.8,
+      "agent": [
+        {
+          "think": "default",
+          "n": 30,
+          "tool_selected": 30,
+          "args_correct": 30,
+          "task_complete": 30,
+          "valid_json": 30
+        }
+      ]
+    },
+    {
+      "model": "qwen3.8:27b",
+      "vision_n": 2,
+      "vision_json_valid_pct": 100.0,
+      "vision_median_s": 6.64,
+      "voice_ttft_median_s": 0.2,
+      "voice_tps_median": 55.2,
+      "agent": [
+        {
+          "think": "low",
+          "n": 30,
+          "tool_selected": 30,
+          "args_correct": 30,
+          "task_complete": 30,
+          "valid_json": 30
+        },
+        {
+          "think": "high",
+          "n": 30,
+          "tool_selected": 30,
+          "args_correct": 30,
+          "task_complete": 30,
+          "valid_json": 30
+        }
+      ]
+    }
+  ],
+  "legacy": [
+    {
+      "model": "gemma3:27b",
+      "vision_n": 20,
+      "vision_json_valid_pct": 100.0,
+      "vision_median_s": 4.11,
+      "voice_ttft_median_s": 0.42,
+      "voice_tps_median": 24.7,
+      "agent": [
+        {
+          "think": "default",
+          "n": 9,
+          "tool_selected": 1,
+          "args_correct": 1,
+          "task_complete": 0,
+          "valid_json": 9
+        }
+      ]
+    },
+    {
+      "model": "gemma4:26b",
+      "vision_n": 20,
+      "vision_json_valid_pct": 100.0,
+      "vision_median_s": 0.95,
+      "voice_ttft_median_s": 0.09,
+      "voice_tps_median": 91.0,
+      "agent": [
+        {
+          "think": "default",
+          "n": 9,
+          "tool_selected": 9,
+          "args_correct": 9,
+          "task_complete": 9,
+          "valid_json": 9
+        }
+      ]
+    },
+    {
+      "model": "gpt-oss:120b",
+      "vision_n": 0,
+      "vision_json_valid_pct": null,
+      "vision_median_s": null,
+      "voice_ttft_median_s": 0.6,
+      "voice_tps_median": 66.7,
+      "agent": [
+        {
+          "think": "low",
+          "n": 9,
+          "tool_selected": 9,
+          "args_correct": 9,
+          "task_complete": 9,
+          "valid_json": 9
+        },
+        {
+          "think": "high",
+          "n": 9,
+          "tool_selected": 9,
+          "args_correct": 9,
+          "task_complete": 9,
+          "valid_json": 9
+        }
+      ]
+    },
+    {
+      "model": "qwen3.6:35b",
+      "vision_n": 20,
+      "vision_json_valid_pct": 100.0,
+      "vision_median_s": 1.15,
+      "voice_ttft_median_s": 0.07,
+      "voice_tps_median": 94.0,
+      "agent": [
+        {
+          "think": "default",
+          "n": 9,
+          "tool_selected": 9,
+          "args_correct": 9,
+          "task_complete": 9,
+          "valid_json": 9
+        }
+      ]
+    },
+    {
+      "model": "qwen3.8:27b",
+      "vision_n": 20,
+      "vision_json_valid_pct": 100.0,
+      "vision_median_s": 3.3,
+      "voice_ttft_median_s": 0.24,
+      "voice_tps_median": 40.6,
+      "agent": [
+        {
+          "think": "low",
+          "n": 9,
+          "tool_selected": 9,
+          "args_correct": 9,
+          "task_complete": 9,
+          "valid_json": 9
+        },
+        {
+          "think": "high",
+          "n": 9,
+          "tool_selected": 9,
+          "args_correct": 9,
+          "task_complete": 9,
+          "valid_json": 9
+        }
+      ]
+    }
+  ],
+  "charts": [
+    "vision_latency.png",
+    "voice_ttft.png",
+    "voice_tps.png",
+    "agent_complete.png"
+  ]
+}

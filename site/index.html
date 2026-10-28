@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Local LLM bake-off · Houghton Labs</title>
+<style>
+:root{--bg:#0b1020;--panel:#121a2e;--line:#1f2a44;--text:#e5e9f2;--mute:#8a96b2;--accent:#a78bfa}
+*{box-sizing:border-box}body{margin:0;font:15px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text)}
+header{padding:36px 24px 20px;border-bottom:1px solid var(--line);max-width:1100px;margin:0 auto}
+h1{margin:0 0 8px;font-size:28px}h1 span{color:var(--accent)}
+.lead{color:var(--mute);max-width:62ch;margin:0}
+main{max-width:1100px;margin:0 auto;padding:24px}
+h2{font-size:18px;margin:28px 0 12px}
+.note{color:var(--mute);font-size:13px;margin:6px 0 16px}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.charts figure{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px}
+.charts img{width:100%;height:auto;border-radius:8px;background:#0e1527}
+.charts figcaption{font-size:12px;color:var(--mute);margin-top:8px}
+table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px}
+th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--mute);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.6px}
+tr:last-child td{border-bottom:0}
+footer{max-width:1100px;margin:0 auto;padding:20px 24px 40px;font-size:12px;color:var(--mute)}
+footer a{color:var(--accent)}
+@media (max-width:800px){.charts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Local LLM <span>bake-off</span></h1>
+  <p class="lead">Side-by-side vision, voice, and agentic scores for open models running fully on-device on a Mac Studio. Aggregate metrics only — no private data.</p>
+</header>
+<main>
+  <p class="note" id="meta">Loading summary…</p>
+  <h2>Latest run (results/runs)</h2>
+  <table id="runs"><thead><tr><th>Model</th><th>Vision JSON</th><th>Vision median s</th><th>Voice TTFT median s</th><th>Voice tok/s</th><th>Agent complete</th></tr></thead><tbody></tbody></table>
+  <h2>Charts</h2>
+  <div class="charts">
+    <figure><img src="assets/vision_latency.png" alt="Vision latency chart"><figcaption>Vision caption latency</figcaption></figure>
+    <figure><img src="assets/voice_ttft.png" alt="Voice TTFT chart"><figcaption>Voice time-to-first-token</figcaption></figure>
+    <figure><img src="assets/voice_tps.png" alt="Voice tokens/sec chart"><figcaption>Voice tokens per second</figcaption></figure>
+    <figure><img src="assets/agent_complete.png" alt="Agent completion chart"><figcaption>Agentic tool-use completion</figcaption></figure>
+  </div>
+  <h2>Legacy suite (results/legacy)</h2>
+  <table id="legacy"><thead><tr><th>Model</th><th>Vision JSON</th><th>Vision median s</th><th>Voice TTFT median s</th><th>Voice tok/s</th><th>Agent complete</th></tr></thead><tbody></tbody></table>
+</main>
+<footer>
+  <a href="https://github.com/SuperJohn/local-llm-bakeoff">github.com/SuperJohn/local-llm-bakeoff</a> · MIT · Hardware: Mac Studio M3 Ultra, 256 GB
+</footer>
+<script>
+const fmt=(v,d=2)=>v==null?"—":Number(v).toFixed(d);
+function agentCell(rows){
+  if(!rows||!rows.length)return "—";
+  return rows.map(r=>{
+    const n=r.n||0; const c=r.task_complete??0;
+    return `${c}/${n}${r.think&&r.think!=="default"?" ("+r.think+")":""}`;
+  }).join(", ");
+}
+function fill(id, rows){
+  const tb=document.querySelector("#"+id+" tbody");
+  tb.innerHTML=(rows||[]).map(r=>`<tr>
+    <td>${r.model}</td>
+    <td>${r.vision_json_valid_pct==null?"—":r.vision_json_valid_pct+"%"}</td>
+    <td>${fmt(r.vision_median_s)}</td>
+    <td>${fmt(r.voice_ttft_median_s)}</td>
+    <td>${fmt(r.voice_tps_median,1)}</td>
+    <td>${agentCell(r.agent)}</td>
+  </tr>`).join("");
+}
+fetch("data/summary.json").then(r=>r.json()).then(d=>{
+  document.getElementById("meta").textContent=`${d.hardware} · generated ${d.generated}. ${d.note||""}`;
+  fill("runs", d.runs); fill("legacy", d.legacy);
+}).catch(e=>{document.getElementById("meta").textContent="Could not load summary.json";});
+</script>
+</body>
+</html>
