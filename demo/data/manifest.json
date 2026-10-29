@@ -1,0 +1,19 @@
+{
+ "app": "local-llm-bakeoff",
+ "generator": "demo/generate_data.py",
+ "seed": 42,
+ "rows": {
+  "tasks": 42,
+  "models": 4,
+  "measured_items": 419,
+  "synthetic_trials": 1130
+ },
+ "unchanged": ["summary.json (real aggregate medians; served as site/data/summary.json)"],
+ "files": [
+  {"name": "tasks.json", "bytes": 7751, "sha256": "878cf07fff3b0992003c70a5cc9257b68ae470b4161aae8c3e24fc1dd2c8e178"},
+  {"name": "models.json", "bytes": 619, "sha256": "d2e201cc48bc0b9f3a5230174037e5c7a0ae1cd6581618e2a132c6d88d2c54cc"},
+  {"name": "measured_items.json", "bytes": 103278, "sha256": "e8df3e77c04f0a4c0116708f4ce162aca8711dc30c1837fe48548a349bdb17ba"},
+  {"name": "synthetic_trials.json", "bytes": 341994, "sha256": "6a7fca8630d266412a87c943d42a76a1becdced10133cb75e8a6b46ae8d5e04d"},
+  {"name": "synthetic_rollup.json", "bytes": 2251, "sha256": "da7b31c0be1c323fc72a54a451491617dfbeee1b963a1e0f6652bda977b582f1"}
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "provenance": "synthetic",
+ "synthetic": true,
+ "note": "p50/p95 over synthetic_trials.json only. Real medians are in summary.json.",
+ "rows": [
+  {"model": "gemma4:26b", "suite": "agent", "think": "default", "n": 150, "latency_s_p50": 1.23, "latency_s_p95": 2.881, "ttft_s_p50": 0.173, "ttft_s_p95": 0.477, "task_complete_pct": 94.7},
+  {"model": "gemma4:26b", "suite": "vision", "think": null, "n": 10, "latency_s_p50": 1.826, "latency_s_p95": 2.594},
+  {"model": "gemma4:26b", "suite": "voice", "think": null, "n": 50, "ttft_s_p50": 0.072, "ttft_s_p95": 0.11, "tok_s_p50": 114.9, "tok_s_p95": 125.1},
+  {"model": "gpt-oss:20b", "suite": "agent", "think": "high", "n": 150, "latency_s_p50": 4.942, "latency_s_p95": 16.028, "ttft_s_p50": 0.699, "ttft_s_p95": 2.642, "task_complete_pct": 95.3},
+  {"model": "gpt-oss:20b", "suite": "agent", "think": "low", "n": 150, "latency_s_p50": 1.607, "latency_s_p95": 4.335, "ttft_s_p50": 0.243, "ttft_s_p95": 0.716, "task_complete_pct": 96.0},
+  {"model": "gpt-oss:20b", "suite": "voice", "think": null, "n": 50, "ttft_s_p50": 0.387, "ttft_s_p95": 0.66, "tok_s_p50": 54.65, "tok_s_p95": 60.4},
+  {"model": "qwen3.6:35b", "suite": "agent", "think": "default", "n": 150, "latency_s_p50": 1.651, "latency_s_p95": 3.815, "ttft_s_p50": 0.23, "ttft_s_p95": 0.564, "task_complete_pct": 97.3},
+  {"model": "qwen3.6:35b", "suite": "vision", "think": null, "n": 10, "latency_s_p50": 3.25, "latency_s_p95": 4.172},
+  {"model": "qwen3.6:35b", "suite": "voice", "think": null, "n": 50, "ttft_s_p50": 0.058, "ttft_s_p95": 0.075, "tok_s_p50": 122.75, "tok_s_p95": 138.4},
+  {"model": "qwen3.8:27b", "suite": "agent", "think": "high", "n": 150, "latency_s_p50": 2.724, "latency_s_p95": 5.904, "ttft_s_p50": 0.383, "ttft_s_p95": 0.79, "task_complete_pct": 95.3},
+  {"model": "qwen3.8:27b", "suite": "agent", "think": "low", "n": 150, "latency_s_p50": 2.988, "latency_s_p95": 6.733, "ttft_s_p50": 0.39, "ttft_s_p95": 1.076, "task_complete_pct": 94.7},
+  {"model": "qwen3.8:27b", "suite": "vision", "think": null, "n": 10, "latency_s_p50": 7.256, "latency_s_p95": 9.617},
+  {"model": "qwen3.8:27b", "suite": "voice", "think": null, "n": 50, "ttft_s_p50": 0.206, "ttft_s_p95": 0.281, "tok_s_p50": 56.45, "tok_s_p95": 62.4}
+ ]
+}

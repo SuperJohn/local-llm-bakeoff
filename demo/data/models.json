@@ -1,0 +1,9 @@
+{
+ "hardware": "Mac Studio M3 Ultra, 256 GB unified memory",
+ "models": [
+  {"tag": "gemma4:26b", "digest": "48eb98ec778c", "caps": ["completion", "vision", "tools", "thinking"], "think_levels": ["default"]},
+  {"tag": "gpt-oss:20b", "digest": "17052f91a42e", "caps": ["completion", "tools", "thinking"], "think_levels": ["low", "high"]},
+  {"tag": "qwen3.6:35b", "digest": "599a7133f2e3", "caps": ["completion", "vision", "tools", "thinking"], "think_levels": ["default"]},
+  {"tag": "qwen3.8:27b", "digest": "47951e4a6661", "caps": ["completion", "vision", "tools", "thinking"], "think_levels": ["low", "high"]}
+ ]
+}
